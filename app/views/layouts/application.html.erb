@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/976f20cd40.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,39 +18,49 @@
         <%= link_to "Bookers", root_path %>
       </li>
       <li>
-        <%= link_to "Home", books_path %>
+        <i class="fa-solid fa-house"></i><%= link_to "Home", root_path %>
       </li>
       <li>
-        <%= link_to "Users", user_path(current_user) %>
+        <i class="fa-solid fa-users"></i><%= link_to "Users", user_path(current_user) %>
       </li>
       <li>
-        <%= link_to "Books", edit_user_path(current_user) %>
+        <i class="fa-solid fa-book-open"></i><%= link_to "Books", books_path(current_user) %>
       </li>
       <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
         <%= link_to "Bookers", root_path %>
       </li>
       <li>
-        <%= link_to "Home", books_path %>
+        <i class="fa-solid fa-house"></i><%= link_to "Home", root_path %>
       </li>
       <li>
-        <%= link_to "About", about_path %>
+        <i class="fa-solid fa-link"></i><%= link_to "About", homes_about_path %>
       </li>
       <li>
-        <%= link_to "Sign up", new_user_registration_path %>
+        <i class="fa-solid fa-user-plus"></i><%= link_to "Sign up", new_user_registration_path %>
       </li>
       <li>
-        <%= link_to "Log in", new_user_session_path %>
+        <i class="fa-solid fa-right-to-bracket"></i><%= link_to "Log in", new_user_session_path %>
       </li>
     <% end %>
   </header>
-  <%= yield %>
-  
+
+
+  <main>
+    <%= yield %>
+  </main>
+
   <footer>
-    <p>CopyRight Infratop.inc</p>
+    <div class="container mt-5">
+      <div class="row">
+        <viv class="mx-auto">
+          <p>CopyRight Infratop.inc</p>
+        </viv>
+      </div>
+    </div>
   </footer>
   </body>
 </html>
