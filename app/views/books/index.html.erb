@@ -1,4 +1,10 @@
-<%= render 'list', books: @books %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <%= render 'books/list', book: @books, user: current_user %>
+    </div>
+
     <div class="col-md-8 offset-md-1">
       <h1>Books</h1>
 
