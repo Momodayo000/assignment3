@@ -7,23 +7,25 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   def index
     @books = Book.all
     @user = current_user
     @book = Book.new
+    @users = User.all
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "更新に成功しました"
+      flash[:notice] = "更新successfully"
       redirect_to user_path(current_user)
     else
-      flash[:notice] = "投稿に失敗しました"
-      @books = Book.all
-      @user = current_user
+      flash[:notice] = "投稿にerrorしました"
       render :edit
     end
   end
