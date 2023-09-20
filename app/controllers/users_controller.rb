@@ -22,10 +22,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "更新successfully"
+      flash[:notice] = "Updatesuccessfully"
       redirect_to user_path(current_user)
     else
-      flash[:notice] = "投稿にerrorしました"
+      flash[:notice] = "Posterror"
       render :edit
     end
   end

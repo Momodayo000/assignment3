@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      flash[:notice] = "投稿successfully"
+      flash[:notice] = "Postsuccessfully"
       redirect_to book_path(@book)
     else
       @books = Book.all
@@ -38,10 +38,10 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "更新successfully"
+      flash[:notice] = "Updatesuccessfully"
       redirect_to book_path(@book)
     else
-      flash[:notice] = "投稿にerrorしました"
+      flash[:notice] = "Posterror"
       @books = Book.all
       render :edit
     end
