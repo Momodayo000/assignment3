@@ -1,0 +1,2 @@
+class PostWorkoutTag < ApplicationRecord
+end
