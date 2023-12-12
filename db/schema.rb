@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_04_064320) do
+ActiveRecord::Schema.define(version: 2023_12_09_091655) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2023_12_04_064320) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "post_workout_tags", force: :cascade do |t|
+    t.integer "post_workout_id", null: false
+    t.integer "workout_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_workout_id", "workout_tag_id"], name: "index_post_workout_tags_on_post_workout_id_and_workout_tag_id", unique: true
+    t.index ["post_workout_id"], name: "index_post_workout_tags_on_post_workout_id"
+    t.index ["workout_tag_id"], name: "index_post_workout_tags_on_workout_tag_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,7 +80,16 @@ ActiveRecord::Schema.define(version: 2023_12_04_064320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workout_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_workout_tags_on_name", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "users"
+  add_foreign_key "post_workout_tags", "post_workouts"
+  add_foreign_key "post_workout_tags", "workout_tags"
 end
