@@ -6,6 +6,7 @@ class PostWorkout < ApplicationRecord
     new_tags = tags - current_tags
 
     old_tags.each do |old_name|
+      self.workout_tags.delete WorkoutTag.find_by(name:old_name)
   end
 
 end
