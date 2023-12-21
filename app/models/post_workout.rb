@@ -10,6 +10,7 @@ class PostWorkout < ApplicationRecord
     end
 
     new_tags.each do |new_name|
+      workout_tag = WorkoutTag.find_or_create_by(name:new_name)
     end
 
 end
