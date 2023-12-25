@@ -11,4 +11,7 @@ class Public::PostWorkoutsController < ApplicationController
       render :new
     end
   end
+
+  def search_tag
+  end
 end
