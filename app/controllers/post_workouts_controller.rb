@@ -13,5 +13,6 @@ class Public::PostWorkoutsController < ApplicationController
   end
 
   def search_tag
+    @tag_list = WorkoutTag.all
   end
 end
