@@ -15,5 +15,6 @@ class Public::PostWorkoutsController < ApplicationController
   def search_tag
     @tag_list = WorkoutTag.all
     @tag = WorkoutTag.find(params[:workout_tag_id])
+    @post_workouts = @tag.post_workouts
   end
 end
